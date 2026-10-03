@@ -21,6 +21,7 @@ transcodes/
 *~
 
 .env
+.cache
 .zed/
 
 jellyfin/cache/

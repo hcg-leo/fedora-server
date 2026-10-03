@@ -15,5 +15,4 @@ cd /home/hcg_leo/fedora-server/qbittorrent/gluetun
 cp .env.example .env
 nvim .env
 
-sudo docker compose -f gluetun up -d
-sudo docker compose -f qbittorrent up -d
+sudo docker compose -f /home/hcg_leo/fedora-server/qbittorrent/qbittorrent.yml up -d
