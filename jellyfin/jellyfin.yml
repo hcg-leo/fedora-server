@@ -1,0 +1,11 @@
+services:
+    jellyfin:
+        image: jellyfin/jellyfin
+        container_name: jellyfin
+        ports:
+            - 8096:8096
+        volumes:
+            - /home/hcg_leo/fedora-server/jellyfin/config:/config
+            - /home/hcg_leo/fedora-server/jellyfin/cache:/cache
+            - /home/hcg_leo/fedora-server/jellyfin/media:/media
+        restart: unless-stopped
