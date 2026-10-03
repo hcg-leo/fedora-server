@@ -1,9 +1,12 @@
+### make this less messy!!!
+
 cache/
 data/
 log/
 logs/
 metadata/
 transcodes/
+
 *.db
 *.db-shm
 *.db-wal
@@ -16,6 +19,10 @@ transcodes/
 *.tmp
 *.swp
 *~
+
+.env
 .zed/
-jellyfin/cache
-jellyfin/media
+
+jellyfin/cache/
+jellyfin/config/root
+jellyfin/config/.jellyfin-data
