@@ -21,3 +21,5 @@ https://ipleak.net/
 
 sudo docker logs gluetun - check if match with ipleak
 sudo docker logs qbittorrent
+
+sudo chmod -R 777 /home/hcg_leo/fedora-server/ - ??

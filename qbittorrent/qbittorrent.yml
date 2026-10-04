@@ -26,6 +26,8 @@ services:
             - gluetun
         environment:
             - WEBUI_PORT=8080
+            - PUID=1000
+            - PGID=1000
         volumes:
             - /home/hcg_leo/fedora-server/qbittorrent/config:/config
             - /home/hcg_leo/fedora-server/qbittorrent/downloads:/downloads
