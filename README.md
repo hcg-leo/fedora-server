@@ -23,17 +23,9 @@ _self host!!!_ - fedora server running jellyfin + qbittorrent, vpn binded to jus
     └── qbittorrent.yml
 ```
 
-### install
+## pre-install
 
-```
-sudo dnf install neovim -y
-```
-
-```
-sudo dnf install git -y
-```
-
-ignore lid closing thing:
+### ignore lid closing
 
 ```
 sudo mkdir -p /etc/systemd/logind.conf.d
@@ -45,21 +37,55 @@ sudo nvim /etc/systemd/logind.conf.d/login.conf
 HandleLidSwitch=ignore
 ```
 
+### hostname
+
 ```
+sudo hostnamectl set-hostname fedora-server
+```
+
+### disable SElinux, for both jellyfin and qbittorrent work together - i will find better solution later
+```
+sudo grubby --update-kernel ALL --args="selinux=0"
+```
+
+```
+sudo reboot
+```
+
+## install
+
+```
+sudo dnf install neovim git -y
+```
+
+ ```
 cd ~
 git clone https://github.com/hcg-leo/fedora-server
+``` 
+
+### docker
+```
+sudo dnf config-manager addrepo --from-repofile https://download.docker.com/linux/fedora/docker-ce.repo
+```
+
+```
+sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+```
+
+```
+sudo systemctl enable --now docker
 ```
 
 ### jellyfin
 
 ```
-sudo docker compose -f jellyfin.yml up -d
+sudo docker compose -f /home/hcg_leo/fedora-server/jellyfin/jellyfin.yml up -d
 ```
 
 ### qbittorrent + vpn - im using mullvad
 
 ```
-cd /home/hcg_leo/fedora-server/qbittorrent/gluetun
+cd /home/hcg_leo/fedora-server/qbittorrent
 cp .env.example .env
 nvim .env
 ```
@@ -73,10 +99,4 @@ test at `https://ipleak.net/` - check if match with gluetun log
 ```
 sudo docker logs gluetun
 sudo docker logs qbittorrent
-```
-
-### need to test if this works or if it was disabling SElinux
-
-```
-sudo chmod -R 777 /home/hcg_leo/fedora-server/
 ```
