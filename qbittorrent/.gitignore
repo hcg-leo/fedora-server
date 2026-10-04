@@ -1,0 +1,7 @@
+*
+!.gitignore
+!qbittorrent.yml
+!.env.example
+!gluetun
+!config
+!downloads
