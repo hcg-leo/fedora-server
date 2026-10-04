@@ -76,7 +76,7 @@ sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin dock
 sudo systemctl enable --now docker
 ```
 
-### jellyfin
+### jellyfin - [media-bar](https://github.com/IAmParadox27/jellyfin-plugin-media-bar)  [file-transformer](https://github.com/IAmParadox27/jellyfin-plugin-file-transformation)
 
 ```
 sudo docker compose -f /home/hcg_leo/fedora-server/jellyfin/jellyfin.yml up -d
@@ -99,4 +99,16 @@ test at `https://ipleak.net/` - check if match with gluetun log
 ```
 sudo docker logs gluetun
 sudo docker logs qbittorrent
+```
+
+### duckdns
+
+```
+cd /home/hcg_leo/fedora-server/duckdns
+cp .env.example .env
+nvim .env
+```
+
+```
+sudo docker compose -f /home/hcg_leo/fedora-server/duckdns/duckdns.yml up -d
 ```
