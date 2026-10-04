@@ -16,3 +16,8 @@ cp .env.example .env
 nvim .env
 
 sudo docker compose -f /home/hcg_leo/fedora-server/qbittorrent/qbittorrent.yml up -d
+
+https://ipleak.net/
+
+sudo docker logs gluetun - check if match with ipleak
+sudo docker logs qbittorrent
