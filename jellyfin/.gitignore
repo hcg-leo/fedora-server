@@ -3,3 +3,6 @@
 !config
 !jellyfin.yml
 !media
+!movies
+!shows
+!music

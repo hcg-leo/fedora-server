@@ -9,4 +9,5 @@ services:
             - /home/hcg_leo/fedora-server/jellyfin/cache:/cache
             - /home/hcg_leo/fedora-server/jellyfin/media/movies:/movies
             - /home/hcg_leo/fedora-server/jellyfin/media/shows:/shows
+            - /home/hcg_leo/fedora-server/jellyfin/media/music:/music
         restart: unless-stopped
