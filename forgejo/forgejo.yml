@@ -1,0 +1,10 @@
+services:
+    forgejo:
+        container_name: forgejo
+        image: codeberg.org/forgejo/forgejo:16
+        restart: always
+        volumes:
+            - /home/hcg_leo/fedora-server/forgejo/forgejo:/data
+        ports:
+            - "3000:3000"
+            - "222:22"

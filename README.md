@@ -112,3 +112,22 @@ nvim .env
 ```
 sudo docker compose -f /home/hcg_leo/fedora-server/duckdns/duckdns.yml up -d
 ```
+
+### forgejo
+
+```
+cd /home/hcg_leo/fedora-server/forgejo/forgejo/gitea/conf
+cp app.ini.example app.ini
+```
+
+```
+sudo docker compose -f /home/hcg_leo/fedora-server/forgejo/forgejo.yml up -d
+```
+
+#### managing forgejo accounts
+
+```
+sudo docker exec -u git forgejo forgejo admin user create --admin --username hcg_leo --password 'password' --email aran20111118@gmail.com
+```
+
+then open 'http://hcg-leo.duckdns.org:3000/user/settings'

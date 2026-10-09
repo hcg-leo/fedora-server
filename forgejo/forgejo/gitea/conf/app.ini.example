@@ -1,0 +1,114 @@
+APP_NAME = forgejo: leo the cat
+RUN_MODE = prod
+
+[repository]
+ROOT = /data/git/repositories
+DEFAULT_PRIVATE = public
+DEFAULT_REPO_UNITS = repo.code,repo.releases
+DISABLED_REPO_UNITS = repo.issues,repo.ext_issues,repo.pulls,repo.wiki,repo.ext_wiki,repo.projects,repo.packages,repo.actions
+DISABLE_STARS = true
+DISABLE_FORKS = true
+DISABLE_MIGRATIONS = false
+
+[repository.local]
+LOCAL_COPY_PATH = /data/gitea/tmp/local-repo
+
+[repository.upload]
+ENABLED = false
+
+[server]
+APP_DATA_PATH = /data/gitea
+DOMAIN = hcg-leo.duckdns.org
+SSH_DOMAIN = hcg-leo.duckdns.org
+HTTP_PORT = 3000
+ROOT_URL = http://hcg-leo.duckdns.org:3000
+; LANDING_PAGE = /hcg_leo/hcg_leo
+DISABLE_SSH = false
+SSH_PORT = 22
+SSH_LISTEN_PORT = 22
+LFS_START_SERVER = false
+
+[database]
+DB_TYPE = sqlite3
+PATH = /data/gitea/gitea.db
+LOG_SQL = false
+
+[indexer]
+ISSUE_INDEXER_TYPE = db
+REPO_INDEXER_ENABLED = false
+
+[session]
+PROVIDER_CONFIG = /data/gitea/sessions
+
+[picture]
+AVATAR_UPLOAD_PATH = /data/gitea/avatars
+REPOSITORY_AVATAR_UPLOAD_PATH = /data/gitea/repo-avatars
+
+[attachment]
+PATH = /data/gitea/attachments
+
+[log]
+MODE = console
+LEVEL = info
+ROOT_PATH = /data/gitea/log
+
+[security]
+INSTALL_LOCK = true
+REVERSE_PROXY_LIMIT = 1
+DISABLE_WEBHOOKS = true
+
+[service]
+DISABLE_REGISTRATION = true
+REQUIRE_SIGNIN_VIEW = false
+DEFAULT_ALLOW_CREATE_ORGANIZATION = false
+DEFAULT_KEEP_EMAIL_PRIVATE = true
+ENABLE_TIMETRACKING = false
+SHOW_MILESTONES_DASHBOARD_PAGE = false
+
+[service.explore]
+DISABLE_USERS_PAGE = true
+DISABLE_ORGANIZATIONS_PAGE = true
+DISABLE_CODE_PAGE = true
+
+[admin]
+DISABLE_REGULAR_ORG_CREATION = true
+
+[ui]
+SHOW_USER_EMAIL = false
+
+[openid]
+ENABLE_OPENID_SIGNIN = false
+ENABLE_OPENID_SIGNUP = false
+
+[oauth2]
+ENABLED = false
+
+[api]
+ENABLE_SWAGGER = false
+
+[badges]
+ENABLED = false
+
+[packages]
+ENABLED = false
+
+[actions]
+ENABLED = false
+
+[cron.update_checker]
+ENABLED = false
+
+[cron.update_mirrors]
+ENABLED = false
+
+[cron.cleanup_packages]
+ENABLED = false
+
+[cron.cleanup_actions]
+ENABLED = false
+
+[cron.sync_external_users]
+ENABLED = false
+
+[cron.update_migration_poster_id]
+ENABLED = false
