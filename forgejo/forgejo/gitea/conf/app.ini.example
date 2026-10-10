@@ -1,4 +1,4 @@
-APP_NAME = forgejo: leo the cat
+APP_NAME = leo the cat
 RUN_MODE = prod
 
 [repository]
@@ -22,7 +22,7 @@ DOMAIN = hcg-leo.duckdns.org
 SSH_DOMAIN = hcg-leo.duckdns.org
 HTTP_PORT = 3000
 ROOT_URL = http://hcg-leo.duckdns.org:3000
-; LANDING_PAGE = /hcg_leo/hcg_leo
+LANDING_PAGE = /hcg_leo
 DISABLE_SSH = false
 SSH_PORT = 22
 SSH_LISTEN_PORT = 22
@@ -75,6 +75,8 @@ DISABLE_REGULAR_ORG_CREATION = true
 
 [ui]
 SHOW_USER_EMAIL = false
+THEMES = nord_polar_night
+DEFAULT_THEME = nord_polar_night
 
 [openid]
 ENABLE_OPENID_SIGNIN = false

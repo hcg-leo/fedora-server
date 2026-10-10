@@ -63,6 +63,10 @@ cd ~
 git clone https://github.com/hcg-leo/fedora-server
 ``` 
 
+```
+sudo chown -R $USER:$USER /home/hcg_leo/fedora-server
+```
+
 ### docker
 ```
 sudo dnf config-manager addrepo --from-repofile https://download.docker.com/linux/fedora/docker-ce.repo

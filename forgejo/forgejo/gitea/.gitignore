@@ -1,3 +1,7 @@
 *
 !.gitignore
 !conf
+!public
+!public/assets
+!public/assets/css
+!public/assets/css/nord_polar_night
