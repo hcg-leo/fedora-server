@@ -1,6 +1,6 @@
 # fedora server config
 
-_self host!!!_ - fedora server running some stuff
+_self host!!!_ - self hosting some stuff, all custom, and all [nord theme](https://github.com/nordtheme/nord)!
 
 ```
 .
@@ -80,7 +80,7 @@ git clone https://github.com/hcg-leo/fedora-server
 sudo chown -R $USER:$USER /home/hcg_leo/fedora-server
 ```
 
-### docker
+### [docker](https://github.com/docker)
 ```
 sudo dnf config-manager addrepo --from-repofile https://download.docker.com/linux/fedora/docker-ce.repo
 ```
@@ -93,13 +93,13 @@ sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin dock
 sudo systemctl enable --now docker
 ```
 
-### jellyfin 
+### [jellyfin](https://github.com/jellyfin/jellyfin)
 
 ```
 sudo docker compose -f /home/hcg_leo/fedora-server/jellyfin/jellyfin.yml up -d
 ```
 
-### qbittorrent + vpn - im using mullvad
+### [qbittorrent](https://github.com/qbittorrent/qBittorrent/) + [vpn](https://github.com/passteque/gluetun) - im using mullvad
 
 ```
 cd /home/hcg_leo/fedora-server/qbittorrent
@@ -118,7 +118,7 @@ sudo docker logs gluetun
 sudo docker logs qbittorrent
 ```
 
-### duckdns
+### [duckdns](https://github.com/linuxserver/docker-duckdns)
 
 ```
 cd /home/hcg_leo/fedora-server/duckdns
@@ -130,7 +130,7 @@ nvim .env
 sudo docker compose -f /home/hcg_leo/fedora-server/duckdns/duckdns.yml up -d
 ```
 
-### forgejo
+### [forgejo](https://codeberg.org/forgejo)
 
 ```
 cd /home/hcg_leo/fedora-server/forgejo/forgejo/gitea/conf

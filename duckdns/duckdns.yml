@@ -3,7 +3,7 @@ services:
         image: lscr.io/linuxserver/duckdns:latest
         container_name: duckdns
         environment:
-            - SUBDOMAINS=subdomain1,subdomain2
+            - SUBDOMAINS=hcg-leo
             - TOKEN=${TOKEN}
         volumes:
             - /home/hcg_leo/fedora-server/duckdns/config:/config
