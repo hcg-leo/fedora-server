@@ -1,26 +1,39 @@
 # fedora server config
 
-_self host!!!_ - fedora server running jellyfin + qbittorrent, vpn binded to just qbittorrent through gluetun
+_self host!!!_ - fedora server running some stuff
 
 ```
 .
 ├── .gitignore
 ├── README.md
+├── duckdns
+│   ├── .env.example
+│   └── duckdns.yml
+├── forgejo
+│   ├── forgejo
+│   │   └── gitea
+│   │       ├── conf
+│   │       │   └── app.ini.example
+│   │       └── public
+│   │           └── assets
+│   │               └── css
+│   │                   └── nord_polar_night
+│   └── forgejo.yml
 ├── jellyfin
 │   ├── config
 │   │   └── config
-│   │       ├── branding.xml
-│   │       └── system.xml
+│   │       └── branding.xml
 │   ├── jellyfin.yml
 │   └── media
 │       ├── movies
+│       ├── music
 │       └── shows
-└── qbittorrent
-    ├── .env.example
-    ├── config
-    ├── downloads
-    ├── gluetun
-    └── qbittorrent.yml
+├── qbittorrent
+│   ├── .env.example
+│   ├── config
+│   ├── downloads
+│   ├── gluetun
+│   └── qbittorrent.yml
 ```
 
 ## pre-install
@@ -29,7 +42,7 @@ _self host!!!_ - fedora server running jellyfin + qbittorrent, vpn binded to jus
 
 ```
 sudo mkdir -p /etc/systemd/logind.conf.d
-sudo nvim /etc/systemd/logind.conf.d/login.conf
+sudo nano /etc/systemd/logind.conf.d/login.conf
 ```
 
 ```
@@ -58,7 +71,7 @@ sudo reboot
 sudo dnf install neovim git -y
 ```
 
- ```
+```
 cd ~
 git clone https://github.com/hcg-leo/fedora-server
 ``` 
@@ -80,7 +93,7 @@ sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin dock
 sudo systemctl enable --now docker
 ```
 
-### jellyfin - [media-bar](https://github.com/IAmParadox27/jellyfin-plugin-media-bar)  [file-transformer](https://github.com/IAmParadox27/jellyfin-plugin-file-transformation)
+### jellyfin 
 
 ```
 sudo docker compose -f /home/hcg_leo/fedora-server/jellyfin/jellyfin.yml up -d
@@ -131,7 +144,7 @@ sudo docker compose -f /home/hcg_leo/fedora-server/forgejo/forgejo.yml up -d
 #### managing forgejo accounts
 
 ```
-sudo docker exec -u git forgejo forgejo admin user create --admin --username hcg_leo --password 'password' --email aran20111118@gmail.com
+sudo docker exec -u git forgejo forgejo admin user create --admin --username hcg_leo --password 'password' --email aran20111118 [at] gmail [dot] com
 ```
 
 then open 'http://hcg-leo.duckdns.org:3000/user/settings'

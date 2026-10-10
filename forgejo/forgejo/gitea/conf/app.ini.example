@@ -75,8 +75,8 @@ DISABLE_REGULAR_ORG_CREATION = true
 
 [ui]
 SHOW_USER_EMAIL = false
-THEMES = nord_polar_night
-DEFAULT_THEME = nord_polar_night
+THEMES = nord
+DEFAULT_THEME = nord
 
 [openid]
 ENABLE_OPENID_SIGNIN = false
