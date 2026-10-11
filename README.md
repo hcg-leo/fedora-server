@@ -93,6 +93,22 @@ sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin dock
 sudo systemctl enable --now docker
 ```
 
+### [duckdns](https://github.com/linuxserver/docker-duckdns)
+
+```
+cd /home/hcg_leo/fedora-server/duckdns
+cp .env.example .env
+nvim .env
+```
+
+```
+sudo docker compose -f /home/hcg_leo/fedora-server/duckdns/duckdns.yml up -d
+```
+
+```
+http://192.168.1.254/
+```
+
 ### [jellyfin](https://github.com/jellyfin/jellyfin)
 
 ```
@@ -114,20 +130,7 @@ sudo docker compose -f /home/hcg_leo/fedora-server/qbittorrent/qbittorrent.yml u
 test at `https://ipleak.net/` - check if match with gluetun log
 
 ```
-sudo docker logs gluetun
 sudo docker logs qbittorrent
-```
-
-### [duckdns](https://github.com/linuxserver/docker-duckdns)
-
-```
-cd /home/hcg_leo/fedora-server/duckdns
-cp .env.example .env
-nvim .env
-```
-
-```
-sudo docker compose -f /home/hcg_leo/fedora-server/duckdns/duckdns.yml up -d
 ```
 
 ### [forgejo](https://codeberg.org/forgejo)
@@ -144,7 +147,7 @@ sudo docker compose -f /home/hcg_leo/fedora-server/forgejo/forgejo.yml up -d
 #### managing forgejo accounts
 
 ```
-sudo docker exec -u git forgejo forgejo admin user create --admin --username hcg_leo --password 'password' --email aran20111118 [at] gmail [dot] com
+sudo docker exec -u git forgejo forgejo admin user create --admin --username hcg-leo --password 'password' --email aran20111118@gmail.com
 ```
 
 then open 'http://hcg-leo.duckdns.org:3000/user/settings'
