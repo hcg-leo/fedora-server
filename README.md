@@ -17,7 +17,7 @@ _self host!!!_ - self hosting some stuff, all custom, and all [nord theme](https
 │   │       └── public
 │   │           └── assets
 │   │               └── css
-│   │                   └── nord_polar_night
+│   │                   └── theme-nord.css
 │   └── forgejo.yml
 ├── jellyfin
 │   ├── config

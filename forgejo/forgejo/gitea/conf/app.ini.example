@@ -83,7 +83,7 @@ ENABLE_OPENID_SIGNIN = false
 ENABLE_OPENID_SIGNUP = false
 
 [oauth2]
-ENABLED = false
+ENABLED = true
 
 [api]
 ENABLE_SWAGGER = false
