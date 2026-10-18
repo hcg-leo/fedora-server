@@ -80,7 +80,7 @@ git clone https://github.com/hcg-leo/fedora-server
 sudo chown -R $USER:$USER /home/hcg_leo/fedora-server
 ```
 
-### [docker](https://github.com/docker)
+### docker
 ```
 sudo dnf config-manager addrepo --from-repofile https://download.docker.com/linux/fedora/docker-ce.repo
 ```
@@ -93,7 +93,7 @@ sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin dock
 sudo systemctl enable --now docker
 ```
 
-### [duckdns](https://github.com/linuxserver/docker-duckdns)
+### duckdns
 
 ```
 cd /home/hcg_leo/fedora-server/duckdns
@@ -109,13 +109,18 @@ sudo docker compose -f /home/hcg_leo/fedora-server/duckdns/duckdns.yml up -d
 http://192.168.1.254/
 ```
 
-### [jellyfin](https://github.com/jellyfin/jellyfin)
+### caddy
+```
+sudo docker compose -f /home/hcg_leo/fedora-server/caddy/caddy.yml up -d
+```
+
+### jellyfin
 
 ```
 sudo docker compose -f /home/hcg_leo/fedora-server/jellyfin/jellyfin.yml up -d
 ```
 
-### [qbittorrent](https://github.com/qbittorrent/qBittorrent/) + [vpn](https://github.com/passteque/gluetun) - im using mullvad
+### qbittorrent
 
 ```
 cd /home/hcg_leo/fedora-server/qbittorrent
@@ -133,7 +138,7 @@ test at `https://ipleak.net/` - check if match with gluetun log
 sudo docker logs qbittorrent
 ```
 
-### [forgejo](https://codeberg.org/forgejo)
+### forgejo
 
 ```
 cd /home/hcg_leo/fedora-server/forgejo/forgejo/gitea/conf

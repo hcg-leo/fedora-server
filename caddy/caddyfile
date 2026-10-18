@@ -5,3 +5,7 @@ jellyfin.hcg-leo.duckdns.org {
 forgejo.hcg-leo.duckdns.org {
     reverse_proxy host.docker.internal:3000
 }
+
+qbittorrent.hcg-leo.duckdns.org {
+    reverse_proxy host.docker.internal:8080
+}
