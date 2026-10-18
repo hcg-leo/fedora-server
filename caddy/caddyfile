@@ -1,0 +1,7 @@
+jellyfin.hcg-leo.duckdns.org {
+    reverse_proxy host.docker.internal:8096
+}
+
+forgejo.hcg-leo.duckdns.org {
+    reverse_proxy host.docker.internal:3000
+}

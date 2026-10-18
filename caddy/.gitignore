@@ -1,0 +1,4 @@
+*
+!.gitignore
+!caddy.yml
+!caddyfile
