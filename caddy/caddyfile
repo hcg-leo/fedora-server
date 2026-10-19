@@ -1,7 +1,3 @@
-ssh.hcg-leo.duckdns.org {
-    reverse_proxy host.docker.internal:22
-}
-
 jellyfin.hcg-leo.duckdns.org {
     reverse_proxy host.docker.internal:8096
 }
@@ -12,4 +8,8 @@ forgejo.hcg-leo.duckdns.org {
 
 qbittorrent.hcg-leo.duckdns.org {
     reverse_proxy host.docker.internal:8080
+}
+
+couchdb.hcg-leo.duckdns.org {
+    reverse_proxy host.docker.internal:5984
 }

@@ -1,0 +1,13 @@
+services:
+    couchdb:
+        image: couchdb:latest
+        container_name: couchdb
+        environment:
+            - COUCHDB_USER=admin
+            - COUCHDB_PASSWORD=
+        volumes:
+            - /home/hcg_leo/fedora-server/couchdb/data:/opt/couchdb/data
+            - /home/hcg_leo/fedora-server/couchdb/etc:/opt/couchdb/etc/local.d
+        ports:
+            - 5984:5984
+        restart: unless-stopped

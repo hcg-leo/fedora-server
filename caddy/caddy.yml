@@ -10,4 +10,3 @@ services:
             - "host.docker.internal:host-gateway"
         volumes:
             - /home/hcg_leo/fedora-server/caddy/caddyfile:/etc/caddy/Caddyfile:ro
-            - /home/hcg_leo/fedora-server/caddy/data:/data

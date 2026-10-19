@@ -156,3 +156,15 @@ sudo docker exec -u git forgejo forgejo admin user create --admin --username hcg
 ```
 
 then open 'http://hcg-leo.duckdns.org:3000/user/settings'
+
+### couchdb for obsidian live sync
+
+```
+cd /home/hcg_leo/fedora-server/couchdb
+cp couchdb.yml.example couchdb.yml
+nvim couchdb.yml
+```
+
+```
+sudo docker compose -f /home/hcg_leo/fedora-server/couchdb/couchdb.yml up -d
+```
