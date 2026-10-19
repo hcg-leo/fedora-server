@@ -1,3 +1,7 @@
+ssh.hcg-leo.duckdns.org {
+    reverse_proxy host.docker.internal:22
+}
+
 jellyfin.hcg-leo.duckdns.org {
     reverse_proxy host.docker.internal:8096
 }
