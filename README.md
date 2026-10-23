@@ -168,3 +168,9 @@ nvim couchdb.yml
 ```
 sudo docker compose -f /home/hcg_leo/fedora-server/couchdb/couchdb.yml up -d
 ```
+
+### kavita
+
+```
+sudo docker compose -f /home/hcg_leo/fedora-server/kavita/kavita.yml up -d
+```
