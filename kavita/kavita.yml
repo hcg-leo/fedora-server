@@ -1,0 +1,11 @@
+services:
+    kavita:
+        image: jvmilazz0/kavita:latest
+        container_name: kavita
+        volumes:
+            - /home/hcg_leo/fedora-server/kavita/config:/kavita/config
+            - /home/hcg_leo/fedora-server/kavita/books:/books
+            - /home/hcg_leo/fedora-server/kavita/manga:/manga
+        ports:
+            - "5000:5000"
+        restart: unless-stopped

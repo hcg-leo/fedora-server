@@ -13,3 +13,7 @@ qbittorrent.hcg-leo.duckdns.org {
 couchdb.hcg-leo.duckdns.org {
     reverse_proxy host.docker.internal:5984
 }
+
+kavita.hcg-leo.duckdns.org {
+    reverse_proxy host.docker.internal:5000
+}
