@@ -8,5 +8,7 @@ services:
         environment:
             EULA: "TRUE"
             VERSION: "1.21.11"
+            TYPE: "PAPER"
+            MEMORY: "4G"
         volumes:
             - /home/hcg_leo/fedora-server/minecraft/data:/data

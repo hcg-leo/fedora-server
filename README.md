@@ -174,3 +174,13 @@ sudo docker compose -f /home/hcg_leo/fedora-server/couchdb/couchdb.yml up -d
 ```
 sudo docker compose -f /home/hcg_leo/fedora-server/kavita/kavita.yml up -d
 ```
+
+### minecraft
+
+```
+sudo docker compose -f /home/hcg_leo/fedora-server/minecraft/minecraft.yml up -d
+```
+
+```
+docker exec minecraft rcon-cli
+```
