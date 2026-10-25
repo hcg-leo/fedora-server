@@ -182,5 +182,5 @@ sudo docker compose -f /home/hcg_leo/fedora-server/minecraft/minecraft.yml up -d
 ```
 
 ```
-docker exec minecraft rcon-cli
+sudo docker exec minecraft rcon-cli
 ```
