@@ -17,3 +17,7 @@ couchdb.hcg-leo.duckdns.org {
 kavita.hcg-leo.duckdns.org {
     reverse_proxy host.docker.internal:5000
 }
+
+minecraft.hcg-leo.duckdns.org {
+    reverse_proxy host.docker.internal:25565
+}
