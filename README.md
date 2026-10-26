@@ -4,37 +4,50 @@ _self host!!!_ - self hosting some stuff, all custom, and all [nord theme](https
 
 ```
 .
-├── .gitignore
-├── README.md
+├── caddy
+│   ├── caddyfile
+│   └── caddy.yml
+├── couchdb
+│   ├── couchdb.yml.example
+│   ├── data
+│   └── etc
 ├── duckdns
-│   ├── .env.example
-│   └── duckdns.yml
+│   └── duckdns.yml
 ├── forgejo
-│   ├── forgejo
-│   │   └── gitea
-│   │       ├── conf
-│   │       │   └── app.ini.example
-│   │       └── public
-│   │           └── assets
-│   │               └── css
-│   │                   └── theme-nord.css
-│   └── forgejo.yml
+│   ├── forgejo
+│   │   └── gitea
+│   │       ├── conf
+│   │       │   └── app.ini.example
+│   │       └── public
+│   │           └── assets
+│   │               └── css
+│   │                   └── theme-nord.css
+│   └── forgejo.yml
+├── .gitignore
 ├── jellyfin
-│   ├── config
-│   │   └── config
-│   │       └── branding.xml
-│   ├── jellyfin.yml
-│   └── media
-│       ├── movies
-│       ├── music
-│       └── shows
+│   ├── config
+│   │   └── config
+│   │       └── branding.xml
+│   ├── jellyfin.yml
+│   └── media
+│       ├── movies
+│       ├── music
+│       └── shows
+├── kavita
+│   ├── books
+│   ├── config
+│   │   └── themes
+│   │       └── nord.css
+│   ├── kavita.yml
+│   └── manga
 ├── qbittorrent
-│   ├── .env.example
-│   ├── config
-│   ├── downloads
-│   ├── gluetun
-│   └── qbittorrent.yml
+│   ├── config
+│   ├── downloads
+│   ├── gluetun
+│   └── qbittorrent.yml
+└── README.md
 ```
+(`git ls-files | tree --fromfile .` to make the cool tree)
 
 ## pre-install
 
@@ -155,7 +168,7 @@ sudo docker compose -f /home/hcg_leo/fedora-server/forgejo/forgejo.yml up -d
 sudo docker exec -u git forgejo forgejo admin user create --admin --username hcg-leo --password 'password' --email aran20111118@gmail.com
 ```
 
-then open 'http://hcg-leo.duckdns.org:3000/user/settings'
+then open `https://forgejo.hcg-leo.duckdns.org/user/settings`
 
 ### couchdb for obsidian live sync
 
