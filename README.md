@@ -47,7 +47,7 @@ _self host!!!_ - self hosting some stuff, all custom, and all [nord theme](https
 │   └── qbittorrent.yml
 └── README.md
 ```
-(`git ls-files | tree --fromfile .` to make the cool tree)
+> `git ls-files | tree --fromfile .` to make the cool tree
 
 ## pre-install
 
@@ -186,14 +186,4 @@ sudo docker compose -f /home/hcg_leo/fedora-server/couchdb/couchdb.yml up -d
 
 ```
 sudo docker compose -f /home/hcg_leo/fedora-server/kavita/kavita.yml up -d
-```
-
-### minecraft
-
-```
-sudo docker compose -f /home/hcg_leo/fedora-server/minecraft/minecraft.yml up -d
-```
-
-```
-sudo docker exec minecraft rcon-cli
 ```
