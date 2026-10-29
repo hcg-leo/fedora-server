@@ -30,9 +30,14 @@ self hosting some stuff, all custom, and all [nord theme](https://github.com/nor
 │   │       └── branding.xml
 │   ├── jellyfin.yml
 │   └── media
-│       ├── movies
-│       ├── music
-│       └── shows
+│       ├── admin
+│       │   ├── movies
+│       │   ├── music
+│       │   └── shows
+│       └── user
+│           ├── movies
+│           ├── music
+│           └── shows
 ├── kavita
 │   ├── books
 │   ├── config
