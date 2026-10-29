@@ -133,6 +133,8 @@ sudo docker compose -f /home/hcg_leo/fedora-server/caddy/caddy.yml up -d
 sudo docker compose -f /home/hcg_leo/fedora-server/jellyfin/jellyfin.yml up -d
 ```
 
+> configure user spaces yourself sorry 
+
 ### qbittorrent
 
 ```
