@@ -1,6 +1,6 @@
 # fedora server config
 
-_self host!!!_ - self hosting some stuff, all custom, and all [nord theme](https://github.com/nordtheme/nord)!
+self hosting some stuff, all custom, and all [nord theme](https://github.com/nordtheme/nord)
 
 ```
 .

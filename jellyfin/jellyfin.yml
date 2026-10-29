@@ -7,7 +7,8 @@ services:
         volumes:
             - /home/hcg_leo/fedora-server/jellyfin/config:/config
             - /home/hcg_leo/fedora-server/jellyfin/cache:/cache
-            - /home/hcg_leo/fedora-server/jellyfin/media/movies:/movies
-            - /home/hcg_leo/fedora-server/jellyfin/media/shows:/shows
-            - /home/hcg_leo/fedora-server/jellyfin/media/music:/music
+            - /home/hcg_leo/fedora-server/jellyfin/media/admin/movies:/movies
+            - /home/hcg_leo/fedora-server/jellyfin/media/admin/shows:/shows
+            - /home/hcg_leo/fedora-server/jellyfin/media/admin/music:/music
+            - /home/hcg_leo/fedora-server/jellyfin/media/tv/movies:/movies
         restart: unless-stopped

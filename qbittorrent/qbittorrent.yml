@@ -31,8 +31,7 @@ services:
         volumes:
             - /home/hcg_leo/fedora-server/qbittorrent/config:/config
             - /home/hcg_leo/fedora-server/qbittorrent/downloads:/downloads
-            - /home/hcg_leo/fedora-server/jellyfin/media/movies:/movies
-            - /home/hcg_leo/fedora-server/jellyfin/media/shows:/shows
+            - /home/hcg_leo/fedora-server/jellyfin/media/admin/movies:/movies
+            - /home/hcg_leo/fedora-server/jellyfin/media/admin/shows:/shows
             - /home/hcg_leo/fedora-server/kavita/manga:/manga
-            - /home/hcg_leo/fedora-server/kavita/books:/books
         restart: unless-stopped
