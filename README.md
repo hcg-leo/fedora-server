@@ -30,10 +30,6 @@ self hosting some stuff, all custom, and all [nord theme](https://github.com/nor
 │   │       └── branding.xml
 │   ├── jellyfin.yml
 │   └── media
-│       ├── admin
-│       │   ├── movies
-│       │   ├── music
-│       │   └── shows
 │       └── user
 │           ├── movies
 │           ├── music
@@ -52,7 +48,7 @@ self hosting some stuff, all custom, and all [nord theme](https://github.com/nor
 │   └── qbittorrent.yml
 └── README.md
 ```
-> `git ls-files | tree --fromfile .` to make the cool tree
+> `git rm -r --cached .` and `git ls-files | tree --fromfile .` to make the cool tree
 
 ## pre-install
 
