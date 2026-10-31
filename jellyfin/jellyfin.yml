@@ -13,5 +13,4 @@ services:
             - /home/hcg_leo/fedora-server/jellyfin/media/admin/music:/music
 
             - /home/hcg_leo/fedora-server/jellyfin/media/family/movies:/family-movies
-            - /home/hcg_leo/fedora-server/jellyfin/media/family/radio:/family-radio
         restart: unless-stopped
