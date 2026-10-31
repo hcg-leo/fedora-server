@@ -171,7 +171,15 @@ sudo docker compose -f /home/hcg_leo/fedora-server/forgejo/forgejo.yml up -d
 sudo docker exec -u git forgejo forgejo admin user create --admin --username hcg-leo --password 'password' --email aran20111118@gmail.com
 ```
 
-then open `https://forgejo.hcg-leo.duckdns.org/user/settings`
+then go to `https://forgejo.hcg-leo.duckdns.org/user/settings`
+
+#### open with option for zed editor
+
+go to https://forgejo.hcg-leo.duckdns.org/admin/config/settings and add the thing bellow
+
+```
+zed = zed://git/clone?repo={url}
+```
 
 ### couchdb for obsidian live sync
 
