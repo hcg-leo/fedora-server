@@ -144,10 +144,4 @@ gitea-theme-meta-info {
 
   accent-color: var(--color-accent);
   color-scheme: dark;
-
-  a[href$="/releases"],
-  a[href$="/-/projects"],
-  a[href$="?tab=watching"] {
-    display: none !important;
-  }
 }
