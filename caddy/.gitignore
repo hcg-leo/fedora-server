@@ -2,3 +2,5 @@
 !.gitignore
 !caddy.yml
 !caddyfile
+!data
+!config

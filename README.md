@@ -48,7 +48,7 @@ self hosting some stuff, all custom, and all [nord theme](https://github.com/nor
 │   └── qbittorrent.yml
 └── README.md
 ```
-> `git rm -r --cached .` and `git ls-files | tree --fromfile .` to make the cool tree
+> `git rm -r --cached .` `git add .` and `git ls-files | tree --fromfile .` to make the cool tree
 
 ## pre-install
 
@@ -168,7 +168,7 @@ sudo docker compose -f /home/hcg_leo/fedora-server/forgejo/forgejo.yml up -d
 #### managing forgejo accounts
 
 ```
-sudo docker exec -u git forgejo forgejo admin user create --admin --username hcg-leo --password 'password' --email aran20111118@gmail.com
+sudo docker exec -u git forgejo forgejo admin user create --admin --username hcg-leo --password 'password' --email 'email'
 ```
 
 then go to `https://forgejo.hcg-leo.duckdns.org/user/settings`
@@ -191,10 +191,4 @@ nvim couchdb.yml
 
 ```
 sudo docker compose -f /home/hcg_leo/fedora-server/couchdb/couchdb.yml up -d
-```
-
-### kavita
-
-```
-sudo docker compose -f /home/hcg_leo/fedora-server/kavita/kavita.yml up -d
 ```
