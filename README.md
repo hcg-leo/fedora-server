@@ -148,6 +148,10 @@ nvim .env
 sudo docker compose -f /home/hcg_leo/fedora-server/qbittorrent/qbittorrent.yml up -d
 ```
 
+open qBittorrents web ui, go to settings -> web ui tab -> auth and tick `bypass authentication for clients on localhost`
+
+then go to advanced -> network interface and select `tun0` 
+
 test at `https://ipleak.net/` - check if match with gluetun log
 
 ```
