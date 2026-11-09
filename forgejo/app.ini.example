@@ -8,11 +8,7 @@ DEFAULT_REPO_UNITS = repo.code,repo.releases
 DISABLED_REPO_UNITS = repo.issues,repo.ext_issues,repo.pulls,repo.wiki,repo.ext_wiki,repo.projects,repo.packages,repo.actions
 DISABLE_STARS = true
 DISABLE_FORKS = true
-DISABLE_MIGRATIONS = false
 DISABLE_DOWNLOAD_SOURCE_ARCHIVES = true
-
-[repository.local]
-LOCAL_COPY_PATH = /data/gitea/tmp/local-repo
 
 [repository.upload]
 ENABLED = false
@@ -20,27 +16,15 @@ ENABLED = false
 [server]
 APP_DATA_PATH = /data/gitea
 DOMAIN = forgejo.hcg-leo.duckdns.org
-HTTP_PORT = 3000
 ROOT_URL = https://forgejo.hcg-leo.duckdns.org
 LANDING_PAGE = /hcg-leo
 DISABLE_SSH = true
 
 [database]
 DB_TYPE = sqlite3
-PATH = /data/gitea/gitea.db
 
 [indexer]
 ISSUE_INDEXER_TYPE = db
-
-[picture]
-AVATAR_UPLOAD_PATH = /data/gitea/avatars
-REPOSITORY_AVATAR_UPLOAD_PATH = /data/gitea/repo-avatars
-
-[attachment]
-PATH = /data/gitea/attachments
-
-[log]
-MODE = console
 
 [security]
 INSTALL_LOCK = true
@@ -48,9 +32,7 @@ DISABLE_WEBHOOKS = true
 
 [service]
 DISABLE_REGISTRATION = true
-REQUIRE_SIGNIN_VIEW = false
 DEFAULT_ALLOW_CREATE_ORGANIZATION = false
-DEFAULT_KEEP_EMAIL_PRIVATE = false
 ENABLE_TIMETRACKING = false
 SHOW_MILESTONES_DASHBOARD_PAGE = false
 
@@ -71,9 +53,6 @@ DEFAULT_THEME = nord
 ENABLE_OPENID_SIGNIN = false
 ENABLE_OPENID_SIGNUP = false
 
-[oauth2]
-ENABLED = true
-
 [api]
 ENABLE_SWAGGER = false
 
@@ -90,12 +69,6 @@ ENABLED = false
 ENABLED = false
 
 [cron.update_mirrors]
-ENABLED = false
-
-[cron.cleanup_packages]
-ENABLED = false
-
-[cron.cleanup_actions]
 ENABLED = false
 
 [cron.sync_external_users]

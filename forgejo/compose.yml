@@ -1,0 +1,10 @@
+services:
+    forgejo:
+        image: codeberg.org/forgejo/forgejo:16
+        container_name: forgejo
+        restart: unless-stopped
+        ports:
+            - 3000:3000
+        volumes:
+            - ./forgejo:/data
+            - ./theme-nord.css:/data/gitea/public/assets/css/theme-nord.css:ro

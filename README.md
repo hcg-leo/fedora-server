@@ -4,51 +4,15 @@ self hosting some stuff, all custom, and all [nord theme](https://github.com/nor
 
 ```
 .
-├── caddy
-│   ├── caddyfile
-│   └── caddy.yml
-├── couchdb
-│   ├── couchdb.yml.example
-│   ├── data
-│   └── etc
-├── duckdns
-│   └── duckdns.yml
-├── forgejo
-│   ├── forgejo
-│   │   └── gitea
-│   │       ├── conf
-│   │       │   └── app.ini.example
-│   │       └── public
-│   │           └── assets
-│   │               └── css
-│   │                   └── theme-nord.css
-│   └── forgejo.yml
-├── .gitignore
-├── jellyfin
-│   ├── config
-│   │   └── config
-│   │       └── branding.xml
-│   ├── jellyfin.yml
-│   └── media
-│       └── user
-│           ├── movies
-│           ├── music
-│           └── shows
-├── kavita
-│   ├── books
-│   ├── config
-│   │   └── themes
-│   │       └── nord.css
-│   ├── kavita.yml
-│   └── manga
-├── qbittorrent
-│   ├── config
-│   ├── downloads
-│   ├── gluetun
-│   └── qbittorrent.yml
-└── README.md
+├── caddy        reverse proxy + https
+├── couchdb      obsidian livesync
+├── duckdns      dynamic dns
+├── forgejo      git
+├── jellyfin     media
+└── qbittorrent  torrents through protonvpn
 ```
-> `git rm -r --cached .` `git add .` and `git ls-files | tree --fromfile .` to make the cool tree
+
+each folder has a `compose.yml`, secrets go in a `.env` next to it (copied from `.env.example`). anything the containers create inside these folders is gitignored.
 
 ## pre-install
 
@@ -56,12 +20,7 @@ self hosting some stuff, all custom, and all [nord theme](https://github.com/nor
 
 ```
 sudo mkdir -p /etc/systemd/logind.conf.d
-sudo nano /etc/systemd/logind.conf.d/login.conf
-```
-
-```
-[Login]
-HandleLidSwitch=ignore
+printf '[Login]\nHandleLidSwitch=ignore\n' | sudo tee /etc/systemd/logind.conf.d/lid.conf
 ```
 
 ### hostname
@@ -70,12 +29,10 @@ HandleLidSwitch=ignore
 sudo hostnamectl set-hostname fedora-server
 ```
 
-### disable SElinux, for both jellyfin and qbittorrent work together - i will find better solution later
-```
-sudo grubby --update-kernel ALL --args="selinux=0"
-```
+### disable SElinux, so the containers can use the bind mounts - i will find better solution later
 
 ```
+sudo grubby --update-kernel ALL --args="selinux=0"
 sudo reboot
 ```
 
@@ -83,116 +40,79 @@ sudo reboot
 
 ```
 sudo dnf install neovim git -y
-```
-
-```
-cd ~
-git clone https://github.com/hcg-leo/fedora-server
-``` 
-
-```
-sudo chown -R $USER:$USER /home/hcg_leo/fedora-server
+git clone https://github.com/hcg-leo/fedora-server ~/fedora-server
 ```
 
 ### docker
+
 ```
 sudo dnf config-manager addrepo --from-repofile https://download.docker.com/linux/fedora/docker-ce.repo
-```
-
-```
 sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
-```
-
-```
 sudo systemctl enable --now docker
 ```
 
 ### duckdns
 
 ```
-cd /home/hcg_leo/fedora-server/duckdns
-cp .env.example .env
-nvim .env
+cd ~/fedora-server/duckdns
+cp .env.example .env && nvim .env
+sudo docker compose up -d
 ```
 
-```
-sudo docker compose -f /home/hcg_leo/fedora-server/duckdns/duckdns.yml up -d
-```
-
-```
-http://192.168.1.254/
-```
+then forward ports 80 and 443 to the server on the router at `http://192.168.1.254/`
 
 ### caddy
+
 ```
-sudo docker compose -f /home/hcg_leo/fedora-server/caddy/caddy.yml up -d
+cd ~/fedora-server/caddy
+sudo docker compose up -d
 ```
 
 ### jellyfin
 
+make the media folders yourself first, otherwise docker makes them as root and qbittorrent can't write to them
+
 ```
-sudo docker compose -f /home/hcg_leo/fedora-server/jellyfin/jellyfin.yml up -d
+cd ~/fedora-server/jellyfin
+mkdir -p media/admin/{movies,shows,music} media/family/movies
+sudo docker compose up -d
 ```
 
-> configure user spaces yourself sorry 
+> to add a user, make a `media/<user>/...` folder and mount it in `compose.yml`
 
 ### qbittorrent
 
 ```
-cd /home/hcg_leo/fedora-server/qbittorrent
-cp .env.example .env
-nvim .env
+cd ~/fedora-server/qbittorrent
+cp .env.example .env && nvim .env
+sudo docker compose up -d
 ```
 
-```
-sudo docker compose -f /home/hcg_leo/fedora-server/qbittorrent/qbittorrent.yml up -d
-```
+the temporary web ui password is in `sudo docker logs qbittorrent`. in the web ui go to settings -> web ui -> authentication and tick `bypass authentication for clients on localhost`, so gluetun can set the forwarded port and `tun0` interface itself
 
-open qBittorrents web ui, go to settings -> web ui tab -> auth and tick `bypass authentication for clients on localhost`
-
-then go to advanced -> network interface and select `tun0` 
-
-test at `https://ipleak.net/` - check if match with gluetun log
-
-```
-sudo docker logs qbittorrent
-```
+test at `https://ipleak.net/` - check it matches the ip in `sudo docker logs gluetun`
 
 ### forgejo
 
 ```
-cd /home/hcg_leo/fedora-server/forgejo/forgejo/gitea/conf
-cp app.ini.example app.ini
-```
-
-```
-sudo docker compose -f /home/hcg_leo/fedora-server/forgejo/forgejo.yml up -d
-```
-
-#### managing forgejo accounts
-
-```
+cd ~/fedora-server/forgejo
+mkdir -p forgejo/gitea/conf && cp app.ini.example forgejo/gitea/conf/app.ini
+sudo docker compose up -d
 sudo docker exec -u git forgejo forgejo admin user create --admin --username hcg-leo --password 'password' --email 'email'
 ```
 
 then go to `https://forgejo.hcg-leo.duckdns.org/user/settings`
 
-#### open with option for zed editor
-
-go to https://forgejo.hcg-leo.duckdns.org/admin/config/settings and add the thing bellow
+for an "open with zed" button, go to `https://forgejo.hcg-leo.duckdns.org/admin/config/settings` and add
 
 ```
 zed = zed://git/clone?repo={url}
 ```
 
-### couchdb for obsidian live sync
+### couchdb for obsidian livesync
 
 ```
-cd /home/hcg_leo/fedora-server/couchdb
-cp couchdb.yml.example couchdb.yml
-nvim couchdb.yml
-```
-
-```
-sudo docker compose -f /home/hcg_leo/fedora-server/couchdb/couchdb.yml up -d
+cd ~/fedora-server/couchdb
+cp .env.example .env && nvim .env
+sudo docker compose up -d
 ```

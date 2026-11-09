@@ -1,0 +1,8 @@
+services:
+    duckdns:
+        image: lscr.io/linuxserver/duckdns
+        container_name: duckdns
+        restart: unless-stopped
+        environment:
+            - SUBDOMAINS=hcg-leo
+            - TOKEN=${TOKEN}

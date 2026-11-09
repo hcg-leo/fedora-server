@@ -78,27 +78,9 @@ html {
     background-color: rgb(var(--bg-light));
 }
 
-/* #region emby-collapse-has */
-/* .emby-collapse:has(.collapseContent.hide) .emby-collapsible-button { */
-/*     border-radius: 999999px; */
-/*     transition: none !important; */
-/* } */
-
-/* .emby-collapse:has(.collapseContent.expanded) .emby-collapsible-button { */
-/*     border-top-left-radius: 2rem; */
-/*     border-top-right-radius: 2rem; */
-/*     border-bottom-left-radius: 0; */
-/*     border-bottom-right-radius: 0; */
-/* } */
-/* .emby-collapse:has(.collapseContent.expanded) .collapseContent { */
-/*     border-bottom-left-radius: 2rem; */
-/*     border-bottom-right-radius: 2rem; */
-/* } */
-/* #endregion */
-
 .formDialogHeader:not(.formDialogHeader-clear),
 .skinHeader-withBackground {
-    color: var(--text);
+    color: rgb(var(--text));
     background: rgb(var(--bg-light));
 }
 
@@ -122,7 +104,6 @@ html {
 }
 
 .libraryPage:not(.noSecondaryNavPage) {
-    /* padding-top: 7.5em !important; */
     padding-top: 10em !important;
 }
 
@@ -198,7 +179,6 @@ html {
 .nowPlayingPlaylist,
 .nowPlayingContextMenu {
     background: rgb(var(--bg));
-    -webkit-background-size: 100% 100%;
     background-size: 100% 100%;
 }
 
@@ -207,32 +187,6 @@ html {
 }
 
 .backgroundContainer.withBackdrop {
-    background: -webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        from(rgba(192, 212, 222, 0.94)),
-        color-stop(rgba(235, 250, 254, 0.94)),
-        color-stop(rgba(227, 220, 212, 0.94)),
-        color-stop(rgba(206, 214, 216, 0.94)),
-        to(rgba(192, 211, 218, 0.94))
-    );
-    background: -webkit-linear-gradient(
-        top,
-        rgba(192, 212, 222, 0.94),
-        rgba(235, 250, 254, 0.94),
-        rgba(227, 220, 212, 0.94),
-        rgba(206, 214, 216, 0.94),
-        rgba(192, 211, 218, 0.94)
-    );
-    background: -o-linear-gradient(
-        top,
-        rgba(192, 212, 222, 0.94),
-        rgba(235, 250, 254, 0.94),
-        rgba(227, 220, 212, 0.94),
-        rgba(206, 214, 216, 0.94),
-        rgba(192, 211, 218, 0.94)
-    );
     background: linear-gradient(
         to bottom,
         rgba(192, 212, 222, 0.94),
@@ -288,10 +242,6 @@ html {
         background-color: rgba(var(--nord2), 0.2) !important;
     }
 
-    .cardBox .cardScalable .cardOverlayButtonIcon {
-        background-color: transparent !important;
-    }
-
     .cardBox .cardOverlayButton.cardOverlayButton.cardOverlayFab-primary:hover {
         background-color: rgba(var(--primary), 0.8) !important;
     }
@@ -342,7 +292,6 @@ html {
 }
 
 a[data-role="button"] {
-    background: #fff !important;
     background: rgba(0, 0, 0, 0.14) !important;
 }
 
@@ -548,7 +497,6 @@ fieldset {
 }
 
 .formDialogFooter:not(.formDialogFooter-clear) {
-    border-top: 1px solid #ddd;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
@@ -649,17 +597,7 @@ body.withSectionTabs:has(.appfooter:empty)
 }
 @media screen and (max-width: 380px) {
     .alphaPicker-fixed.alphaPicker-vertical {
-        /* @FIXME(jakehamilton): The page-wide swipe gestures break when scrolling something horizontally. */
         display: none;
-        visibility: hidden;
-
-        position: static;
-        overflow-y: hidden;
-        overflow-x: auto;
-    }
-    .alphaPicker-fixed.alphaPicker-vertical .alphaPickerRow {
-        flex-direction: row;
-        flex-wrap: nowrap;
     }
 
     .itemsContainer.padded-right-withalphapicker {
@@ -715,7 +653,6 @@ body.withSectionTabs:has(.appfooter:empty)
 }
 
 .detailTableBodyRow-shaded:nth-child(even) {
-    background: #f8f8f8;
     background: rgba(0, 0, 0, 0.1);
 }
 
@@ -776,7 +713,6 @@ body.withSectionTabs:has(.appfooter:empty)
 .emby-textarea {
     color: rgb(var(--text));
     background: rgb(var(--bg-light));
-    /* border: 0.16em solid rgba(0, 0, 0, 0.158); */
     border: 2px solid rgb(var(--bg-light));
 }
 
@@ -832,12 +768,6 @@ body.withSectionTabs:has(.appfooter:empty)
 
 .itemProgressBarForeground {
     background: rgb(var(--primary));
-    /* background: linear-gradient( */
-    /*     90deg, */
-    /*     rgba(0, 210, 201, 1) 0%, */
-    /*     rgba(13, 194, 98, 1) 28%, */
-    /*     rgba(0, 75, 185, 1) 100% */
-    /* ); */
 }
 
 .itemProgressBar {
@@ -847,14 +777,6 @@ body.withSectionTabs:has(.appfooter:empty)
 
 .backgroundProgress &gt; div {
     background: rgb(var(--nord2));
-}
-
-.innerCardFooter {
-    /* border-radius: 0.14rem; */
-    /* margin: 0.4rem 0.5rem 0.4rem 0.5rem; */
-}
-
-.innerCardFooter .itemProgressBar {
 }
 
 .emby-checkbox:focus:not(:checked) + span + .checkboxOutline {
@@ -1043,10 +965,6 @@ body.withSectionTabs:has(.appfooter:empty)
     background: rgb(var(--primary));
 }
 
-.emby-tab-button.show-focus:focus {
-    color: rgb(var(--primary));
-}
-
 .emby-tab-button:not(.emby-tab-button-active):hover {
     background: rgb(var(--nord2));
 }
@@ -1058,7 +976,6 @@ body.withSectionTabs:has(.appfooter:empty)
 .channelPrograms,
 .guide-channelHeaderCell,
 .programCell {
-    border-color: #555;
     border-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -1098,7 +1015,6 @@ body.withSectionTabs:has(.appfooter:empty)
 }
 
 .guide-date-tab-button {
-    color: #555;
     color: rgba(0, 0, 0, 0.54);
 }
 
@@ -1116,7 +1032,6 @@ body.withSectionTabs:has(.appfooter:empty)
     color: #000;
     background: #fff3a5;
     padding: 1em;
-    -webkit-border-radius: 0.25em;
     border-radius: 0.25em;
 }
 
@@ -1236,7 +1151,6 @@ body.withSectionTabs:has(.appfooter:empty)
 
 @media (min-height: 31.25em) {
     [dir="ltr"] .padded-right-withalphapicker {
-        padding-right: 3.3%;
         padding-right: max(env(safe-area-inset-right), 3.3%);
     }
 }
@@ -1248,11 +1162,6 @@ body.withSectionTabs:has(.appfooter:empty)
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
-
-/* .card.portraitCard.show-animation:focus &gt; .cardBox, */
-/* .card.overflowPortraitCard.show-animation:focus &gt; .cardBox { */
-/*     transform: scale(1.1); */
-/* } */
 
 .card.show-animation:focus &gt; .cardBox {
     transform: scale(1.1);

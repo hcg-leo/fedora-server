@@ -1,7 +1,0 @@
-*
-!.gitignore
-!conf
-!public
-!public/assets
-!public/assets/css
-!public/assets/css/theme-nord.css
