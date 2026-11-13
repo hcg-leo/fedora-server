@@ -72,7 +72,7 @@ ENABLE_OPENID_SIGNIN = false
 ENABLE_OPENID_SIGNUP = false
 
 [oauth2]
-ENABLED = true
+ENABLED = false
 
 [api]
 ENABLE_SWAGGER = false
