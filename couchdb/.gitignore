@@ -1,5 +1,6 @@
 *
 !.gitignore
+!.env.example
 !data
 !etc
-!couchdb.yml.example
+!couchdb.yml
