@@ -8,7 +8,7 @@ self hosting some stuff, all custom, and all [nord theme](https://github.com/nor
 │   ├── caddyfile
 │   └── caddy.yml
 ├── couchdb
-│   ├── couchdb.yml.example
+│   ├── couchdb.yml
 │   ├── data
 │   └── etc
 ├── duckdns
@@ -189,8 +189,8 @@ zed = zed://git/clone?repo={url}
 
 ```
 cd /home/hcg_leo/fedora-server/couchdb
-cp couchdb.yml.example couchdb.yml
-nvim couchdb.yml
+cp .env.example .env
+nvim .env
 ```
 
 ```

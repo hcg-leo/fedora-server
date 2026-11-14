@@ -4,7 +4,7 @@ services:
         container_name: couchdb
         environment:
             - COUCHDB_USER=admin
-            - COUCHDB_PASSWORD=${PASSWORD}
+            - COUCHDB_PASSWORD=${COUCHDB_PASSWORD}
         volumes:
             - /home/hcg_leo/fedora-server/couchdb/data:/opt/couchdb/data
             - /home/hcg_leo/fedora-server/couchdb/etc:/opt/couchdb/etc/local.d
