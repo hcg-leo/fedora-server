@@ -6,7 +6,9 @@ self hosting some stuff, all custom, and all [nord theme](https://github.com/nor
 .
 ├── caddy
 │   ├── caddyfile
-│   └── caddy.yml
+│   ├── caddy.yml
+│   ├── config
+│   └── data
 ├── duckdns
 │   └── duckdns.yml
 ├── forgejo
@@ -42,9 +44,10 @@ self hosting some stuff, all custom, and all [nord theme](https://github.com/nor
 │   ├── files
 │   └── vikunja.yml
 └── webdav
-    ├── data
-    └── webdav.yml
+    ├── data
+    └── webdav.yml
 ```
+
 > `git rm -r --cached .` `git add .` and `git ls-files | tree --fromfile .` to make the cool tree
 
 ## pre-install
@@ -68,6 +71,7 @@ sudo hostnamectl set-hostname fedora-server
 ```
 
 ### disable SElinux, for both jellyfin and qbittorrent work together - i will find better solution later
+
 ```
 sudo grubby --update-kernel ALL --args="selinux=0"
 ```
@@ -85,13 +89,14 @@ sudo dnf install neovim git -y
 ```
 cd ~
 git clone https://github.com/hcg-leo/fedora-server
-``` 
+```
 
 ```
 sudo chown -R $USER:$USER /home/hcg_leo/fedora-server
 ```
 
 ### docker
+
 ```
 sudo dnf config-manager addrepo --from-repofile https://download.docker.com/linux/fedora/docker-ce.repo
 ```
@@ -121,6 +126,7 @@ http://192.168.1.254/
 ```
 
 ### caddy
+
 ```
 sudo docker compose -f /home/hcg_leo/fedora-server/caddy/caddy.yml up -d
 ```
@@ -131,11 +137,11 @@ sudo docker compose -f /home/hcg_leo/fedora-server/caddy/caddy.yml up -d
 sudo docker compose -f /home/hcg_leo/fedora-server/jellyfin/jellyfin.yml up -d
 ```
 
-> configure user spaces yourself sorry 
+> configure user spaces yourself sorry
 
 ### qbittorrent
 
-get the wireguard key from `https://account.protonvpn.com/downloads` wireguard configuration. under vpn options **turn on `NAT-PMP (Port Forwarding)`** or port forwarding wont work. copy the `PrivateKey` into `.env`
+get the wireguard key from `https://account.protonvpn.com/downloads` wireguard configuration. remember to turn on `NAT-PMP`. copy the `PrivateKey` into `.env`
 
 ```
 cd /home/hcg_leo/fedora-server/qbittorrent
@@ -200,37 +206,27 @@ nvim .env
 sudo docker compose -f /home/hcg_leo/fedora-server/webdav/webdav.yml up -d
 ```
 
-in obsidian on every device, install the `Remotely Save` community plugin and set:
+install the `remotely save` community plugin and set:
 
-- remote service: `WebDAV`
+- remote service: `WebDAV` - couchdb too complicated for this
 - server address: `https://webdav.hcg-leo.duckdns.org`
 - username / password: same as `.env`
 - auth type: `basic`
-
-> notes are stored as plain files in `webdav/data`, so they can be backed up or read directly
+- run on startup: `1 second`
+- save on sync: `enabled`
 
 ### vikunja
 
-make `.env` with a random secret, it keeps you logged in across restarts
-
 ```
 cd /home/hcg_leo/fedora-server/vikunja
-echo "SECRET=$(openssl rand -hex 32)" > .env
+echo "SECRET=$(od -An -tx1 -N32 /dev/urandom | tr -d ' \n')" > .env
 ```
-
-> vikunja runs as uid 1000, if `id -u` isnt 1000 run `sudo chown 1000 db files`
 
 ```
 sudo docker compose -f /home/hcg_leo/fedora-server/vikunja/vikunja.yml up -d
 sudo docker restart caddy
 ```
 
-registration is off so make the account from the cli, it asks for the password
-
 ```
 sudo docker exec -it vikunja /app/vikunja/vikunja user create -u hcg-leo -e 'email'
 ```
-
-then go to `https://vikunja.hcg-leo.duckdns.org`. in each project open `...` --> views and delete gantt, table and kanban so its just the list
-
-> after editing `config.yml` run `sudo docker restart vikunja`
