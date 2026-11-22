@@ -30,19 +30,17 @@ self hosting some stuff, all custom, and all [nord theme](https://github.com/nor
 │           ├── movies
 │           ├── music
 │           └── shows
-├── kavita
-│   ├── books
-│   ├── config
-│   │   └── themes
-│   │       └── nord.css
-│   ├── kavita.yml
-│   └── manga
 ├── qbittorrent
 │   ├── config
 │   ├── downloads
 │   ├── gluetun
 │   └── qbittorrent.yml
 ├── README.md
+├── vikunja
+│   ├── config.yml
+│   ├── db
+│   ├── files
+│   └── vikunja.yml
 └── webdav
     ├── data
     └── webdav.yml
@@ -210,3 +208,29 @@ in obsidian on every device, install the `Remotely Save` community plugin and se
 - auth type: `basic`
 
 > notes are stored as plain files in `webdav/data`, so they can be backed up or read directly
+
+### vikunja
+
+make `.env` with a random secret, it keeps you logged in across restarts
+
+```
+cd /home/hcg_leo/fedora-server/vikunja
+echo "SECRET=$(openssl rand -hex 32)" > .env
+```
+
+> vikunja runs as uid 1000, if `id -u` isnt 1000 run `sudo chown 1000 db files`
+
+```
+sudo docker compose -f /home/hcg_leo/fedora-server/vikunja/vikunja.yml up -d
+sudo docker restart caddy
+```
+
+registration is off so make the account from the cli, it asks for the password
+
+```
+sudo docker exec -it vikunja /app/vikunja/vikunja user create -u hcg-leo -e 'email'
+```
+
+then go to `https://vikunja.hcg-leo.duckdns.org`. in each project open `...` --> views and delete gantt, table and kanban so its just the list
+
+> after editing `config.yml` run `sudo docker restart vikunja`

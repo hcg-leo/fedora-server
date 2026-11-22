@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.env.example
+!config.yml
+!db
+!files
+!vikunja.yml
