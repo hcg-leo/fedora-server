@@ -10,6 +10,6 @@ qbittorrent.hcg-leo.duckdns.org {
     reverse_proxy host.docker.internal:8080
 }
 
-couchdb.hcg-leo.duckdns.org {
-    reverse_proxy host.docker.internal:5984
+webdav.hcg-leo.duckdns.org {
+    reverse_proxy host.docker.internal:8081
 }

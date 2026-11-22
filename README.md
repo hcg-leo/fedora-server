@@ -7,10 +7,6 @@ self hosting some stuff, all custom, and all [nord theme](https://github.com/nor
 ├── caddy
 │   ├── caddyfile
 │   └── caddy.yml
-├── couchdb
-│   ├── couchdb.yml
-│   ├── data
-│   └── etc
 ├── duckdns
 │   └── duckdns.yml
 ├── forgejo
@@ -46,7 +42,10 @@ self hosting some stuff, all custom, and all [nord theme](https://github.com/nor
 │   ├── downloads
 │   ├── gluetun
 │   └── qbittorrent.yml
-└── README.md
+├── README.md
+└── webdav
+    ├── data
+    └── webdav.yml
 ```
 > `git rm -r --cached .` `git add .` and `git ls-files | tree --fromfile .` to make the cool tree
 
@@ -138,6 +137,8 @@ sudo docker compose -f /home/hcg_leo/fedora-server/jellyfin/jellyfin.yml up -d
 
 ### qbittorrent
 
+get the wireguard key from `https://account.protonvpn.com/downloads` wireguard configuration. under vpn options **turn on `NAT-PMP (Port Forwarding)`** or port forwarding wont work. copy the `PrivateKey` into `.env`
+
 ```
 cd /home/hcg_leo/fedora-server/qbittorrent
 cp .env.example .env
@@ -148,15 +149,19 @@ nvim .env
 sudo docker compose -f /home/hcg_leo/fedora-server/qbittorrent/qbittorrent.yml up -d
 ```
 
-open qBittorrents web ui, go to settings -> web ui tab -> auth and tick `bypass authentication for clients on localhost`
-
-then go to advanced -> network interface and select `tun0` 
-
-test at `https://ipleak.net/` - check if match with gluetun log
+get the temporary web ui password
 
 ```
 sudo docker logs qbittorrent
 ```
+
+open qBittorrents web ui, go to settings --> web ui tab --> auth and tick `bypass authentication for clients on localhost`
+
+```
+sudo docker compose -f /home/hcg_leo/fedora-server/qbittorrent/qbittorrent.yml up -d --force-recreate
+```
+
+test at `https://ipleak.net/` - check if match with gluetun log
 
 ### forgejo
 
@@ -185,14 +190,23 @@ go to https://forgejo.hcg-leo.duckdns.org/admin/config/settings and add the thin
 zed = zed://git/clone?repo={url}
 ```
 
-### couchdb for obsidian live sync
+### webdav for obsidian sync
 
 ```
-cd /home/hcg_leo/fedora-server/couchdb
+cd /home/hcg_leo/fedora-server/webdav
 cp .env.example .env
 nvim .env
 ```
 
 ```
-sudo docker compose -f /home/hcg_leo/fedora-server/couchdb/couchdb.yml up -d
+sudo docker compose -f /home/hcg_leo/fedora-server/webdav/webdav.yml up -d
 ```
+
+in obsidian on every device, install the `Remotely Save` community plugin and set:
+
+- remote service: `WebDAV`
+- server address: `https://webdav.hcg-leo.duckdns.org`
+- username / password: same as `.env`
+- auth type: `basic`
+
+> notes are stored as plain files in `webdav/data`, so they can be backed up or read directly

@@ -1,0 +1,13 @@
+services:
+    webdav:
+        image: rclone/rclone:latest
+        container_name: webdav
+        command: serve webdav /data --addr :8081
+        environment:
+            - RCLONE_USER=${WEBDAV_USER}
+            - RCLONE_PASS=${WEBDAV_PASSWORD}
+        volumes:
+            - /home/hcg_leo/fedora-server/webdav/data:/data
+        ports:
+            - 8081:8081
+        restart: unless-stopped
