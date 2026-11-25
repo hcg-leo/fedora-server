@@ -13,7 +13,3 @@ qbittorrent.hcg-leo.duckdns.org {
 webdav.hcg-leo.duckdns.org {
     reverse_proxy host.docker.internal:8081
 }
-
-vikunja.hcg-leo.duckdns.org {
-    reverse_proxy host.docker.internal:3456
-}
